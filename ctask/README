@@ -1,0 +1,34 @@
+Build Instructions
+The Projects is build with GNU g++ with C++11 or beyond
+used cmake to generate makefiles
+cmake .
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: <<projectdir>>
+make
+ade:[ vjitta_rti ] [vjitta@slc12bma ~/ctask]$ make
+[ 16%] Building CXX object CMakeFiles/ctask.dir/Ctask.cpp.o
+[ 33%] Building CXX object CMakeFiles/ctask.dir/Player.cpp.o
+[ 50%] Building CXX object CMakeFiles/ctask.dir/Initiator.cpp.o
+[ 66%] Building CXX object CMakeFiles/ctask.dir/Channel.cpp.o
+[ 83%] Building CXX object CMakeFiles/ctask.dir/UDPChannel.cpp.o
+[100%] Linking CXX executable ctask
+[100%] Built target ctask
+
+ctask is the binary
+mt for multi threading message processing
+Both Player1 and Player2 are create in same process and their eventual message passing is done in two different threads
+chmod 777 mt.sh
+./mt.sh
+otherwise 
+./ctask 1 127.0.0.1 9999 127.0.0.1 8888
+
+MultiProcess Message passing
+Player1 in one process 
+Player2 in differnet process
+you can do this manually as well. by starting the process on two differen terminals for clear message arbitration.
+one one terminal 
+ ./ctask 2 127.0.0.1 9999 127.0.0.1 8888
+on second terminal 
+ ./ctask 1 127.0.0.1 9999 127.0.0.1 8888
